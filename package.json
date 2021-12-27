@@ -1,0 +1,26 @@
+{
+  "name": "ecommerce",
+  "version": "1.0.0",
+  "description": "MERN shopping cart app",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon backend/server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarandeepLubana/mern-eCommerce.git"
+  },
+  "author": "Karandeep Lubana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KarandeepLubana/mern-eCommerce/issues"
+  },
+  "homepage": "https://github.com/KarandeepLubana/mern-eCommerce#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
