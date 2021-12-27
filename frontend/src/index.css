@@ -2,18 +2,20 @@ main {
   min-height: 80vh;
 }
 
-
 /* Header css */
-.header-space{
+.header-space {
   padding-right: 0.3rem;
 }
 
 /* Rating */
-h3{
+h3 {
   padding: 1rem 0;
 }
 
 .rating span {
   margin: 0.1rem;
+}
 
+.link {
+  text-decoration: none;
 }
