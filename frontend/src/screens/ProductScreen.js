@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import React from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import {
@@ -10,15 +11,28 @@ import {
   ListGroupItem,
 } from "react-bootstrap";
 import Rating from "../components/Rating";
-import products from "../products";
+// import products from "../products";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 const ProductScreen = ({ match }) => {
   //   const [searchParams, setSearchParams] = useSearchParams();
   //   console.log(searchParams.get(":id"));
   const { id } = useParams();
-  const product = products.find((product) => product._id == id);
-  //   console.log(id);
+  // const product = products.find((product) => product._id == id);
+
+  const [product, setProduct] = useState({});
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      const { data } = await axios.get(`/api/products/${id}`);
+
+      setProduct(data);
+    };
+
+    fetchProduct();
+  }, []);
+
   return (
     <>
       <Link className="btn btn-dark my-3" to="/">
