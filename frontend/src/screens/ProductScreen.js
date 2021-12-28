@@ -1,21 +1,13 @@
 import { useState, useEffect } from "react";
 import React from "react";
-import { Link, useSearchParams } from "react-router-dom";
-import {
-  Row,
-  Col,
-  Image,
-  ListGroup,
-  Card,
-  Button,
-  ListGroupItem,
-} from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
 import Rating from "../components/Rating";
 // import products from "../products";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
-const ProductScreen = ({ match }) => {
+const ProductScreen = () => {
   //   const [searchParams, setSearchParams] = useSearchParams();
   //   console.log(searchParams.get(":id"));
   const { id } = useParams();
@@ -31,7 +23,7 @@ const ProductScreen = ({ match }) => {
     };
 
     fetchProduct();
-  }, []);
+  }, [id]);
 
   return (
     <>
