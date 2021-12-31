@@ -1,9 +1,14 @@
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container } from "react-bootstrap";
-// import { Link } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 const Header = () => {
+  let location = useLocation();
+  let { id } = useParams();
+  // console.log(location.pathname);
+  // console.log(id);
+
   return (
     <header>
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
@@ -18,7 +23,11 @@ const Header = () => {
           >
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
-                <Nav.Link>
+                <Nav.Link
+                  active={
+                    location.pathname.slice(0, 5) === "/cart" ? true : false
+                  }
+                >
                   <i className="fas fa-shopping-cart header-space"></i>Cart
                 </Nav.Link>
               </LinkContainer>
