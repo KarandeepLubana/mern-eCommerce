@@ -4,12 +4,16 @@ const connectDB = require("./config/db");
 const colors = require("colors");
 const productRoutes = require("./routes/productRoutes");
 const { notFound, errorHandler } = require("./middleware/errorMiddleware");
+const userRoutes = require()
+
 
 dotenv.config();
 
 connectDB();
 
 const app = express();
+
+app.use(express.json()); // parses json data in the body
 
 app.get("/", (req, res) => {
   res.send("API is running ...");
