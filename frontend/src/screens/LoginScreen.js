@@ -22,22 +22,25 @@ const LoginScreen = () => {
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
   useEffect(() => {
+    console.log("~~~", userInfo);
+
     if (userInfo) {
-        navigate(redirect)
+      console.log("~~~", redirect);
+      navigate(redirect);
     }
   }, [navigate, userInfo, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     // Dispatch LOGIN
-    dispatch(login(email, password))
+    dispatch(login(email, password));
   };
 
   return (
     <FormContainer>
       <h1>Sign In</h1>
-      {error  && <Message variant="danger">{error}</Message>}
-      {loading && <Loader/>}
+      {error && <Message variant="danger">{error}</Message>}
+      {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId="email">
           <Form.Label>Email Address</Form.Label>
@@ -49,7 +52,7 @@ const LoginScreen = () => {
           ></Form.Control>
         </Form.Group>
 
-        <Form.Group controlId="passoword">
+        <Form.Group controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
