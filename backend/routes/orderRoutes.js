@@ -6,7 +6,7 @@ const {
   updateOrderToPaid,
   getMyOrders,
 } = require("../controllers/orderController");
-const protect = require("../middleware/authMiddleware");
+const {protect} = require("../middleware/authMiddleware");
 
 // router.post('/login', authUser);
 router.get("/myorders", [protect, getMyOrders]);
