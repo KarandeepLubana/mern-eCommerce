@@ -9,6 +9,7 @@ const {
 } = require("../controllers/productController");
 const { protect, admin } = require("../middleware/authMiddleware");
 
+router.put("/:id", [protect, admin, updateProducts]);
 // @desc     Fetch all products
 // @route    GET /api/products
 // @access   Public
@@ -23,6 +24,5 @@ router.get("/:id", getProductById);
 
 router.delete("/:id", [protect, admin, deleteProduct]);
 
-router.put("/:id", [protect, admin, updateProducts]);
 
 module.exports = router;
