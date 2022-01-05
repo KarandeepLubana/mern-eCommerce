@@ -1,14 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
 import { listUsers, deleteUser } from "../actions/userActions";
+import { useParams } from "react-router-dom";
 
 const UserListScreen = () => {
   const dispatch = useDispatch();
+
   let navigate = useNavigate();
 
   const userList = useSelector((state) => state.userList);
@@ -26,7 +28,7 @@ const UserListScreen = () => {
     } else {
       navigate("/login");
     }
-  }, [dispatch, navigate, successDelete]);
+  }, [dispatch, navigate, successDelete, userInfo]);
 
   const deleteHandler = (id) => {
     // console.log("delete");
@@ -73,7 +75,7 @@ const UserListScreen = () => {
                     )}
                   </td>
                   <td>
-                    <LinkContainer to={`/user/${person._id}/edit`}>
+                    <LinkContainer to={`/admin/user/${person._id}/edit`}>
                       <Button variant="light" className="btn-sm">
                         <i className="fas fa-edit"></i>
                       </Button>
