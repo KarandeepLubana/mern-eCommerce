@@ -4,6 +4,8 @@ const {
   getProducts,
   getProductById,
   deleteProduct,
+  updateProducts,
+  createProduct,
 } = require("../controllers/productController");
 const { protect, admin } = require("../middleware/authMiddleware");
 
@@ -12,11 +14,15 @@ const { protect, admin } = require("../middleware/authMiddleware");
 // @access   Public
 router.get("/", getProducts);
 
+router.post("/", [protect, admin, createProduct]);
+
 // @desc     Fetch single product
 // @route    GET /api/products/:id
 // @acesss   Public
 router.get("/:id", getProductById);
 
 router.delete("/:id", [protect, admin, deleteProduct]);
+
+router.put("/:id", [protect, admin, updateProducts]);
 
 module.exports = router;
