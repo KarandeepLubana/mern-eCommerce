@@ -11,8 +11,13 @@ const reviewSchema = mongoose.Schema(
       required: true,
     },
     comment: {
-      type: Number,
+      type: String,
       required: true,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User", // Specify which admin user created this product
     },
   },
   {
@@ -25,7 +30,7 @@ const productSchema = mongoose.Schema(
     user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
-      ref: 'User', // Specify which admin user created this product
+      ref: "User", // Specify which admin user created this product
     },
     name: {
       type: String,
