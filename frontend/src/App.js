@@ -25,6 +25,7 @@ function App() {
       <main className="py-3">
         <Container>
           <Routes>
+            {/* <Route path="/search/" element={<HomeScreen />}></Route> */}
             <Route path="/" element={<HomeScreen />}></Route>
             <Route path="/product/:id" element={<ProductScreen />}></Route>
             <Route path="/cart/:id" element={<CartScreen />}></Route>
@@ -37,6 +38,7 @@ function App() {
             <Route path="/placeorder" element={<PlaceOrderScreen />}></Route>
             <Route path="/order/:id" element={<OrderScreen />}></Route>
             <Route path="/admin/userlist" element={<UserListScreen />}></Route>
+            <Route path="/search/:keyword" element={<HomeScreen />}></Route>
             <Route
               path="/admin/productlist"
               element={<ProductListScreen />}

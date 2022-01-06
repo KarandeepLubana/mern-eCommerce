@@ -5,18 +5,21 @@ import Product from "../components/Product";
 import { listProducts } from "../actions/productActions";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
+import { useParams } from "react-router-dom";
 
 // import products from "../products";
 
 const HomeScreen = () => {
+  let { keyword } = useParams();
+
   const dispatch = useDispatch(); // used to dispatch an action
   const productList = useSelector((state) => state.productList); // used to retireve the needed state
   const { loading, error, products } = productList; // loading, error, products are the possible things that could be sent down
 
   // This will run as soon as the component is mounted
   useEffect(() => {
-    dispatch(listProducts());
-  }, [dispatch]);
+    dispatch(listProducts(keyword));
+  }, [dispatch, keyword]);
 
   return (
     <>

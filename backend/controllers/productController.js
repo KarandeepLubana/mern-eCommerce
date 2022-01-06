@@ -5,7 +5,20 @@ const Product = require("../models/productModels");
 // @route    GET /api/products
 // @access   Public
 const getProducts = asyncHandler(async (req, res) => {
-  const products = await Product.find({});
+  
+
+
+  // when there is a question mark (?) you use req.query
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i",
+        },
+      }
+    : {};
+
+  const products = await Product.find({ ...keyword });
   // throw new Error("Some Error");
   res.json(products);
 });

@@ -1,9 +1,10 @@
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams, Route, Routes } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"; // Used to bring in global statw
 import { logout } from "../actions/userActions";
+import SearchBox from "./SearchBox";
 
 const Header = () => {
   let location = useLocation();
@@ -27,11 +28,16 @@ const Header = () => {
           <LinkContainer to="/">
             <Navbar.Brand>ProShop</Navbar.Brand>
           </LinkContainer>
+          <SearchBox />
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse
             id="basic-navbar-nav"
             className="justify-content-end"
           >
+          {/* <SearchBox /> */}
+            {/* <Routes>
+              <Route render={<SearchBox />} />
+            </Routes> */}
             <Nav className="ml-auto">
               <LinkContainer to="/cart">
                 <Nav.Link
