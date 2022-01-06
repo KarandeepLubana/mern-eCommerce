@@ -39,8 +39,17 @@ function App() {
             <Route path="/order/:id" element={<OrderScreen />}></Route>
             <Route path="/admin/userlist" element={<UserListScreen />}></Route>
             <Route path="/search/:keyword" element={<HomeScreen />}></Route>
+            <Route path="/page/:pageNumber" element={<HomeScreen />}></Route>
+            <Route
+              path="/search/:keyword/page/:pageNumber"
+              element={<HomeScreen />}
+            ></Route>
             <Route
               path="/admin/productlist"
+              element={<ProductListScreen />}
+            ></Route>
+            <Route
+              path="/admin/productlist/:pageNumber"
               element={<ProductListScreen />}
             ></Route>
             <Route

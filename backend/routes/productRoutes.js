@@ -7,11 +7,14 @@ const {
   updateProducts,
   createProduct,
   createProductReview,
+  getTopProducts,
 } = require("../controllers/productController");
 const { protect, admin } = require("../middleware/authMiddleware");
 
 router.post("/:id/reviews", [protect, createProductReview]);
 router.put("/:id", [protect, admin, updateProducts]);
+
+router.get("/top", getTopProducts);
 
 // @desc     Fetch all products
 // @route    GET /api/products

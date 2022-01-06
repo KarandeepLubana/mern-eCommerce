@@ -5,9 +5,9 @@ const Product = require("../models/productModels");
 // @route    GET /api/products
 // @access   Public
 const getProducts = asyncHandler(async (req, res) => {
-  
+  const pageSize = 8;
 
-
+  const page = Number(req.query.pageNumber) || 1;
   // when there is a question mark (?) you use req.query
   const keyword = req.query.keyword
     ? {
@@ -18,9 +18,12 @@ const getProducts = asyncHandler(async (req, res) => {
       }
     : {};
 
-  const products = await Product.find({ ...keyword });
+  const count = await Product.countDocuments({ ...keyword });
+  const products = await Product.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
   // throw new Error("Some Error");
-  res.json(products);
+  res.json({ products, page, pages: Math.ceil(count / pageSize) });
 });
 
 // @desc     Fetch single product
@@ -124,6 +127,15 @@ const createProductReview = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Get top rated products
+// @route   GET /api/products/top
+// @access  Public
+const getTopProducts = asyncHandler(async (req, res) => {
+  const products = await Product.find({}).sort({ rating: -1 }).limit(3);
+
+  res.json(products);
+});
+
 // @desc    Update a product
 // @route   PUT /api/products/:id
 // @access  Private/Admin
@@ -157,4 +169,5 @@ module.exports = {
   createProduct,
   updateProducts,
   createProductReview,
+  getTopProducts,
 };

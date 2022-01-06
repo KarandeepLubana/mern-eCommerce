@@ -1,14 +1,13 @@
 import React from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
-import { useLocation, useParams, Route, Routes } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux"; // Used to bring in global statw
 import { logout } from "../actions/userActions";
 import SearchBox from "./SearchBox";
 
 const Header = () => {
   let location = useLocation();
-  let { id } = useParams();
   // console.log(location.pathname);
   // console.log(id);
 
@@ -26,7 +25,7 @@ const Header = () => {
       <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>ProShop</Navbar.Brand>
+            <Navbar.Brand>TechShop</Navbar.Brand>
           </LinkContainer>
           <SearchBox />
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -34,7 +33,7 @@ const Header = () => {
             id="basic-navbar-nav"
             className="justify-content-end"
           >
-          {/* <SearchBox /> */}
+            {/* <SearchBox /> */}
             {/* <Routes>
               <Route render={<SearchBox />} />
             </Routes> */}
