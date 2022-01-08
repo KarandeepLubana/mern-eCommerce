@@ -2,6 +2,8 @@
 
 > eCommerce platform built with the MERN stack & Redux
 
+https://techshopapp0.herokuapp.com
+
 ## Features
 
 - Full featured shopping cart
